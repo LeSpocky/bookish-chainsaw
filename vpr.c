@@ -4,8 +4,8 @@
 
 void pr_ext( const char *tpl, ... );
 
-void pr_int( const char *tpl_1, va_list *ap_1, const char *tpl_2,
-        va_list *ap_2 );
+void pr_int( const char *tpl_1, va_list ap_1, const char *tpl_2,
+        va_list ap_2 );
 
 void vpr( const char *tpl, va_list ap );
 
@@ -23,22 +23,22 @@ void pr_ext( const char *tpl, ... ) {
     va_end( args );
 }
 
-void pr_int( const char *tpl_1, va_list *ap_1, const char *tpl_2,
-        va_list *ap_2 )
+void pr_int( const char *tpl_1, va_list ap_1, const char *tpl_2,
+        va_list ap_2 )
 {
     if ( ap_1 ) {
-        vprintf( tpl_1, *ap_1 );
+        vprintf( tpl_1, ap_1 );
     } else {
-        printf( tpl_1 );
+        printf( "%s", tpl_1 );
     }
 
     if ( ap_2 ) {
-        vprintf( tpl_2, *ap_2 );
+        vprintf( tpl_2, ap_2 );
     } else {
-        printf( tpl_2 );
+        printf( "%s", tpl_2 );
     }
 }
 
 void vpr( const char *tpl, va_list ap ) {
-    pr_int( tpl, &ap, "bar\n", NULL );
+    pr_int( tpl, ap, "bar\n", NULL );
 }
