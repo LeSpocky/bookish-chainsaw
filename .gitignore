@@ -30,3 +30,6 @@
 
 # Debug files
 *.dSYM/
+
+# Editor/IDE files
+*.kdev4
