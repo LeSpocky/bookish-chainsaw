@@ -2,14 +2,18 @@
 #include <stddef.h>
 #include <stdio.h>
 
+/*  https://gcc.gnu.org/onlinedocs/gcc/Common-Function-Attributes.html#Common-Function-Attributes   */
+__attribute__ ((format (__printf__, 1, 2)))
 void pr_ext( const char *tpl, ... );
 
 void pr_int( const char *tpl_1, va_list *ap_1, const char *tpl_2,
         va_list *ap_2 );
 
+__attribute__ ((format (__printf__, 1, 0)))
 void vpr( const char *tpl, va_list ap );
 
-int main( int argc, char *argv[] ) {
+int main( void )
+{
     pr_ext( "foo %i\n", 42 );
 
     return 0;
